@@ -6,8 +6,7 @@ const AirModel = require('../models/AirMonitoring');
     exports.getAllData = (req, res)=> {
        
         AirModel.getAllData((err, airMonitoring) =>{
-            if(err)
-            res.send(err);
+            if(err) return res.send(err);
             console.log('data', airMonitoring);
             res.send(airMonitoring)
         })

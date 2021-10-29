@@ -12,15 +12,17 @@ const AirMonitoring = function(table){
 // get all data from airMonitoring
 
 
-    AirMonitoring.getAllData = (res) =>{
-        db.query('SELECT * FROM AirMonitoring', (err, res)=>{
+    AirMonitoring.getAllData = ( result) =>{
+        db.query("SELECT *  FROM AirMonitoring", (err, res)=>{
             if(err){
                 console.log('Error while fetching airMonitoring', err);
                 result(err, null);
+              
             }else{
                 console.log('AirMonitoring fetched successfully');
-                result(null,res);
+                result(res, null);
             }
+            db.end();
         })
         }
 
