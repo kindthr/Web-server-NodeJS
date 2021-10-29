@@ -4,10 +4,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const router = express.Router();
-
-const airController = require('./controllers/AirMonitoring.controller');
-
+const TableRoutes = require('./routes/routes');
 
 app.use(bodyParser.json());
 
@@ -17,11 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Load HTTP module
 const http = require("http");
 
+//IP Address wifi
 const hostname = "192.168.1.121";
 
 const port = process.env.PORT || 8080;
 
-const TableRoutes = require('./routes/routes');
+
 
 // Create HTTP server
 const server = http.createServer(function(req, res) {
@@ -33,9 +31,10 @@ console.log("http was created!");
 }
 });
 
+// How can I use routes using server 
 
 
-db.connect(function(err) {
+{/* db.connect(function(err) {
   if (err) throw err;
   console.log("Connection established !");
   db.query("SELECT *  FROM AirMonitoring", function (err, result) {
@@ -43,7 +42,6 @@ db.connect(function(err) {
       console.log(result);
     });
   });
-{/* 
  */}
 
  app.use('/api/', TableRoutes);
